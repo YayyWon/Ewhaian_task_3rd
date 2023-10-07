@@ -1,62 +1,30 @@
-const form = document.querySelector(".js-form"),
-    input = form.querySelector("input"),
-    greeting = document.querySelector(".js-greetings");
+const loginForm = document.querySelector("#login-form")
+const loginInput = document.querySelector("#login-form input")
+const greeting = document.querySelector("#greeting")
 
-const USER_LS = "currentUser",
-    SHOWING_CN = "showing";
+const HIDDEN_CLASSNAME = "hidden"
+const USERNAME_KEY = "userName"
 
-function saveName(text) {
-    localStorage.setItem(USER_LS, text);
+function onLoginSubmit(event) {
+    event.preventDefault()
+    loginForm.classList.add(HIDDEN_CLASSNAME)
+    const userName = loginInput.value
+    localStorage.setItem(USERNAME_KEY, userName)
+    paintGreetings(userName)
 }
 
-function handleSubmit(event) {
-    event.preventDefault();
-    const currentValue = input.value;
-    paintGreeting(currentValue);
-    saveName(currentValue);
+function paintGreetings(username) {
+    greeting.innerHTML = "Hello, " + username
+    greeting.classList.remove(HIDDEN_CLASSNAME)
 }
 
-function askForName() {
-    form.classList.add(SHOWING_CN);
-    form.addEventListener("submit", handleSubmit);
+const savedUserName = localStorage.getItem(USERNAME_KEY)
+
+if (savedUserName === null) {
+    // show the form
+    loginForm.classList.remove(HIDDEN_CLASSNAME)
+    loginForm.addEventListener("submit", onLoginSubmit)
+} else {
+    // show the greetings
+    paintGreetings(savedUserName)
 }
-
-function paintGreeting(text) {
-
-    form.classList.remove(SHOWING_CN);
-
-    greeting.classList.add(SHOWING_CN);
-
-    const date = new Date();
-    const hours = date.getHours();
-    let mention = 'Hello';
-    if (0 <= hours && hours <= 4 || 20 < hours) {
-
-        mention = 'Good night';
-    } else if (hours < 12) {
-
-        mention = 'Good morning';
-    } else {
-
-        mention = 'Good afternoon';
-    }
-
-    greeting.innerText = `${mention}, ${text}.`;
-}
-
-
-function loadName() {
-    const currentUser = localStorage.getItem(USER_LS);
-
-    if (currentUser === null) {
-        askForName();
-    } else {
-
-        paintGreeting(currentUser);
-    }
-}
-function init() {
-    loadName();
-}
-
-init();

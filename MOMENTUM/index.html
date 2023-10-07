@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\projects\task\3주차\MOMENTUM\css\style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+
+    <title>Momentum</title>
+</head>
+
+<body>
+    <div id="weather-container">
+        <img id="icon"></img>
+        <div id="weather">
+            <span></span>
+            <br>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="scene">
+        <div id="main">
+            <form id="login-form" class="hidden">
+                <input required maxlength="15" type="text" placeholder="What is your name?" />
+                <button>Log In</button>
+            </form>
+
+            <h1 id="clock">00:00:00</h1>
+            <h2 id="greeting" class="hidden"></h2>
+
+            <div id="todo">
+                <div>
+                    <span id="todo-span" class="hidden">TO DO LIST</span>
+                </div>
+                <form id="todo-form">
+                    <input type="text" placeholder="Write and Press Enter"
+                        style="border: none; background: transparent; width: 300px; height: 50px;">
+                </form>
+                <ul id="todo-list"></ul>
+            </div>
+
+
+            <button class="hidden" id="logout-button">LOGOUT</button>
+        </div>
+
+        <div id="quote">
+            <span></span>
+            <br>
+            <span></span>
+        </div>
+
+
+    </div>
+    <script src="C:\projects\task\3주차\MOMENTUM\js\greetings.js"></script>
+    <script src="C:\projects\task\3주차\MOMENTUM\js\clock.js"></script>
+    <script src="C:\projects\task\3주차\MOMENTUM\js\quote.js"></script>
+    <script src="C:\projects\task\3주차\MOMENTUM\js\background.js"></script>
+    <script src="C:\projects\task\3주차\MOMENTUM\js\todo.js"></script>
+    <script src="C:\projects\task\3주차\MOMENTUM\js\weather.js"></script>
+    <script src="https://kit.fontawesome.com/eb1c9c2a9c.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
